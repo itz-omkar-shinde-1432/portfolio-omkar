@@ -31,6 +31,7 @@ const sections = ['home', 'about', 'skills', 'projects', 'interests', 'contact']
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('home');
+  const [status, setStatus] = useState('');
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
@@ -53,10 +54,27 @@ export default function Home() {
     return () => observers.forEach((observer) => observer && observer.disconnect());
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert('Thank you! Your message has been sent (mock).');
-  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+
+  const res = await fetch(form.action, {
+    method: form.method,
+    body: data,
+    headers: {
+      'Accept': 'application/json'
+    }
+  });
+
+  if (res.ok) {
+    setStatus('✅ Thank you! Your message has been sent.');
+    form.reset();
+  } else {
+    setStatus('❌ Oops! Something went wrong. Please try again.');
+  }
+};
+
 
   return (
     <div className="dark min-h-screen transition-colors duration-300">
@@ -194,32 +212,41 @@ export default function Home() {
   action="https://formspree.io/f/xkgbpnzb"
   method="POST"
   className="space-y-5"
+  onSubmit={handleSubmit}
 >
-  <input 
-    type="text" 
+  <input
+    type="text"
     name="name"
-    placeholder="Your Name" 
-    className="w-full px-5 py-3 rounded border border-gray-300 bg-white/10 text-white placeholder-gray-300" 
-    required 
+    placeholder="Your Name"
+    className="w-full px-5 py-3 rounded border border-gray-300 bg-white/10 text-white placeholder-gray-300"
+    required
   />
-  <input 
-    type="email" 
+  <input
+    type="email"
     name="email"
-    placeholder="Your Email" 
-    className="w-full px-5 py-3 rounded border border-gray-300 bg-white/10 text-white placeholder-gray-300" 
-    required 
+    placeholder="Your Email"
+    className="w-full px-5 py-3 rounded border border-gray-300 bg-white/10 text-white placeholder-gray-300"
+    required
   />
-  <textarea 
+  <textarea
     name="message"
-    placeholder="Your Message" 
-    rows={4} 
-    className="w-full px-5 py-3 rounded border border-gray-300 bg-white/10 text-white placeholder-gray-300" 
+    placeholder="Your Message"
+    rows={4}
+    className="w-full px-5 py-3 rounded border border-gray-300 bg-white/10 text-white placeholder-gray-300"
     required
   ></textarea>
+
+  {/* Honeypot field for spam protection */}
+  <input type="text" name="_gotcha" style={{ display: 'none' }} />
+
   <button className="bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-8 py-3 rounded-full transition">
     Submit
   </button>
 </form>
+
+{/* Status message */}
+{status && <p className="mt-4 text-green-400">{status}</p>}
+
 
             </div>
           </section>
