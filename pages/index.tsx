@@ -190,12 +190,37 @@ export default function Home() {
           <section id="contact" className="py-24 px-6 text-center" data-aos="fade-up">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-cyan-400">Contact</h2>
-              <form className="space-y-5" onSubmit={handleSubmit}>
-                <input type="text" placeholder="Your Name" className="w-full px-5 py-3 rounded border border-gray-300 bg-white/10 text-white placeholder-gray-300" />
-                <input type="email" placeholder="Your Email" className="w-full px-5 py-3 rounded border border-gray-300 bg-white/10 text-white placeholder-gray-300" />
-                <textarea placeholder="Your Message" rows={4} className="w-full px-5 py-3 rounded border border-gray-300 bg-white/10 text-white placeholder-gray-300"></textarea>
-                <button className="bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-8 py-3 rounded-full transition">Submit</button>
-              </form>
+              <form
+  action="https://formspree.io/f/xkgbpnzb"
+  method="POST"
+  className="space-y-5"
+>
+  <input 
+    type="text" 
+    name="name"
+    placeholder="Your Name" 
+    className="w-full px-5 py-3 rounded border border-gray-300 bg-white/10 text-white placeholder-gray-300" 
+    required 
+  />
+  <input 
+    type="email" 
+    name="email"
+    placeholder="Your Email" 
+    className="w-full px-5 py-3 rounded border border-gray-300 bg-white/10 text-white placeholder-gray-300" 
+    required 
+  />
+  <textarea 
+    name="message"
+    placeholder="Your Message" 
+    rows={4} 
+    className="w-full px-5 py-3 rounded border border-gray-300 bg-white/10 text-white placeholder-gray-300" 
+    required
+  ></textarea>
+  <button className="bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-8 py-3 rounded-full transition">
+    Submit
+  </button>
+</form>
+
             </div>
           </section>
 
