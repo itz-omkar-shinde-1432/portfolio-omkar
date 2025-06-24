@@ -147,27 +147,44 @@ export default function Home() {
             </div>
           </section>
 
-          <section id="skills" className="py-24 px-6 text-center" data-aos="fade-up">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-bold mb-10 text-cyan-400">Skills</h2>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-                {skillIcons.map((skill, index) => (
-                  <Tilt key={index} glareEnable glareMaxOpacity={0.2} scale={1.05} transitionSpeed={250}>
-                    <Tippy content={`Proficiency: ${skill.level}`} placement="top">
-                      <div
-                        className="bg-gradient-to-br from-cyan-600 to-blue-600 py-4 px-6 rounded-xl shadow-xl hover:shadow-cyan-400 flex flex-col items-center justify-center gap-2 text-lg"
-                        data-aos="zoom-in"
-                        data-aos-delay={`${index * 100}`}
-                      >
-                        <span className="text-2xl">{skill.icon}</span>
-                        {skill.name}
-                      </div>
-                    </Tippy>
-                  </Tilt>
-                ))}
+<section id="skills" className="py-24 px-6 text-center" data-aos="fade-up">
+  <div className="max-w-6xl mx-auto">
+    <h2 className="text-4xl md:text-5xl font-bold mb-10 text-cyan-400">Skills</h2>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      {skillIcons.map((skill, index) => {
+        const isHtmlCss = ['HTML', 'CSS'].includes(skill.name);
+        return (
+          <Tilt
+            key={index}
+            glareEnable
+            glareMaxOpacity={0.2}
+            scale={1.05}
+            transitionSpeed={250}
+          >
+            <Tippy content={`Proficiency: ${skill.level}`} placement="top">
+              <div
+                className="bg-gradient-to-br from-cyan-600 to-blue-600 h-24 rounded-xl shadow-lg hover:shadow-cyan-400 flex flex-col items-center justify-center gap-2 text-lg"
+                data-aos="zoom-in"
+                data-aos-delay={`${index * 100}`}
+              >
+                <span className={`${isHtmlCss ? 'text-xl mt-1' : 'text-3xl mt-1'}`}>
+                  {skill.icon}
+                </span>
+                <span className={isHtmlCss ? '-mt-1' : ''}>{skill.name}</span>
               </div>
-            </div>
-          </section>
+            </Tippy>
+          </Tilt>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+
+
+
+
 
           <section id="projects" className="py-24 px-6 text-center" data-aos="fade-up">
             <div className="max-w-4xl mx-auto">
