@@ -199,10 +199,20 @@ export default function Home() {
             </div>
           </section>
 
-          <footer className="text-center text-gray-400 py-6 text-sm">
-            © 2025 Omkar | All rights reserved | View Source Code<br />
-            Built with React & Next.js, Tailwind CSS, AOS Animations, Vercel Hosting.
-          </footer>
+         <footer className="text-center text-gray-400 py-6 text-sm">
+  © 2025 Omkar | All rights reserved |{" "}
+  <a 
+    href="https://github.com/itz-omkar-shinde-1432/portfolio-omkar/tree/main" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    className="underline hover:text-gray-300"
+  >
+    View Source Code
+  </a>
+  <br />
+  Built with React & Next.js, Tailwind CSS, AOS Animations, Vercel Hosting.
+</footer>
+
         </main>
       </div>
     </div>
