@@ -13,13 +13,13 @@ import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
 const skillIcons = [
-  { name: 'Java', icon: <FaJava />, level: 'Advanced' },
-  { name: 'Spring Boot', icon: <SiSpringboot />, level: 'Intermediate' },
+  { name: 'Java', icon: <FaJava />, level: 'Intermediate' },
+  { name: 'Spring Boot', icon: <SiSpringboot />, level: 'Beginner' },
   { name: 'Git', icon: <FaGitAlt />, level: 'Advanced' },
   { name: 'Linux', icon: <FaLinux />, level: 'Intermediate' },
   { name: 'MySQL', icon: <SiMysql />, level: 'Intermediate' },
   { name: 'AWS', icon: <FaAws />, level: 'Beginner' },
-  { name: 'GCP', icon: <SiGooglecloud />, level: 'Beginner' },
+  { name: 'GCP', icon: <SiGooglecloud />, level: 'Intermediate' },
   { name: 'Python', icon: <SiPython />, level: 'Beginner' },
   { name: 'Canva', icon: <SiCanva />, level: 'Advanced' },
   { name: 'Figma', icon: <SiFigma />, level: 'Intermediate' },
@@ -180,12 +180,6 @@ export default function Home() {
     </div>
   </div>
 </section>
-
-
-
-
-
-
           <section id="projects" className="py-24 px-6 text-center" data-aos="fade-up">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-cyan-400">Projects</h2>
